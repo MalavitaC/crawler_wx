@@ -130,11 +130,31 @@ function getArticleInfoByPath(list){
 			list.author = author;
 			//公众号
 			list.wechat_number = $("#profileBt a").text();
-		    setTimeout(function () {
-				r({code: 0, data: list})
-		    }, 1000 + Math.ceil(Math.random() * 500));
+
+            var ajax_url = list.url.replace(/\/s\?/, '/mp/getcomment?');
+
+            var options = {
+              url: ajax_url,
+              json: true,
+              method: 'GET'
+            };
+			request(options, function (error, response, body) {
+				if (error) return j({code: 500, err: error});
+				console.log(response)
+				console.log(body)
+				if (response.statusCode != 200) {
+
+	                list.read_num = 0;
+	                list.like_num = 0;
+				}
+                list.read_num = body.read_num;
+                list.like_num = body.like_num;
+			    setTimeout(function () {
+					r({code: 0, data: list})
+			    }, 1000 + Math.ceil(Math.random() * 500));
+			});
 		})
-	})
+	});
 }
 
 async function start(name){
@@ -167,5 +187,4 @@ async function start(name){
 	}
 	console.log(listInfo)
 }
-
 start();
