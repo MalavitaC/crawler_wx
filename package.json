@@ -1,0 +1,16 @@
+{
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
+    "glob": "^7.1.2",
+    "koa": "^2.5.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.4.0",
+    "moment": "^2.22.1",
+    "mysql": "^2.15.0",
+    "mysql2": "^1.5.3",
+    "request": "^2.85.0",
+    "sequelize": "^4.37.6",
+    "superagent": "^3.8.3",
+    "yarn.lock": "^0.0.1-security"
+  }
+}
